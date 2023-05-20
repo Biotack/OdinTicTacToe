@@ -2,3 +2,21 @@
     margin: 0;
     padding: 0;
 }
+
+.main-container {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.container {
+    border: 1px dashed black;
+    margin: 1em;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
