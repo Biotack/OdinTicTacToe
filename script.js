@@ -1,5 +1,5 @@
 const HashBoard = (() => {
-  const gameBoard = [[`1`,`2`,``,``,``,``,``,``,``]]
+  const gameBoard = [[``,``,``,``,``,``,``,``,``]]
   
   const buildBaseGameBoard = () => {
     return gameBoard;
@@ -20,3 +20,4 @@ const initGame = (() => {
 const playerChar = (() => {
   const currentPlayer = {}
 })
+
