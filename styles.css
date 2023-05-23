@@ -8,7 +8,7 @@ body {
 
 :root {
     --cell-size: 100px;
-    --mark-size: cal(var(--cell-size) * .9);
+    --mark-size: calc(var(--cell-size) * .9);
 }
 
 .body-container {
@@ -23,22 +23,91 @@ body {
 
 }
 
+
 .square {
+    display: flex;
+    position: relative;
     width: var(--cell-size);
     height: var(--cell-size);
-    background-color: black;
-    border: 1px solid white;
+    background-color: white;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-.container {
-    border: 1px dashed black;
-    margin: 1em;
-    /* justify-content: center; */
+.square.x,
+.square.circle {
+    cursor: not-allowed;
+}
+
+.square:first-child,
+.square:nth-child(2),
+.square:nth-child(3) {
+    border-top: none;
+}
+
+.square:nth-child(3n+1) {
+    border-left: none;
+}
+
+.square:nth-child(3n+3) {
+    border-right: none;
+}
+
+.square:last-child,
+.square:nth-last-child(2),
+.square:nth-last-child(3) {
+    border-bottom: none;
+}
+
+.square.x::before,
+.square.x::after,
+.board.x .square:not(.x):not(.circle):hover::before,
+.board.x .square:not(.x):not(.circle):hover::after {
+    content: '';
+    height: var(--mark-size);
+    width: calc(var(--mark-size) * .25);
+    background-color: black;
+    position: absolute;
+}
+
+
+.square.x::before,
+.board.x .square:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+}
+
+.square.x::after,
+.board.x .square:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
 }
 
 .button-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+}
+
+.square.circle::before,
+.square.circle::after,
+.board.circle .square:not(.x):not(.circle):hover::before,
+.board.circle .square:not(.x):not(.circle):hover::after {
+    content: '';
+    height: var(--mark-size);
+    width: var(--mark-size);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.square.circle:before,
+.board.circle .square:not(.x):not(.circle):hover::before {
+    background-color: black;
+}
+
+.square.circle:after,
+.board.circle .square:not(.x):not(.circle):hover::after {
+    background-color: white;
+    height: calc(var(--mark-size) * .7);
+    width: calc(var(--mark-size) * .7);
 }
